@@ -6,7 +6,5 @@
 </head>
 <body>
 <nav>
-    <a href="/">Painel</a> |
-    <a href="/historico">Histórico</a> |
-    <a href="/produtos/novo">Cadastrar Produto</a>
+    <a href="/">Painel</a>
 </nav>
