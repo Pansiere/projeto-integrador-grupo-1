@@ -214,6 +214,42 @@ form {
     box-shadow: 0 9px 20px rgba(212, 20, 117, 0.4);
 }
 
+/* BOTÃO DELETAR (dentro da tabela) */
+.form-deletar {
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    max-width: none;
+    display: inline-block;
+}
+
+.btn-deletar {
+    background: linear-gradient(90deg, #ff5c8a, #e91e63);
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    white-space: nowrap;
+    box-shadow: 0 3px 8px rgba(233, 30, 99, 0.25);
+    transition: all 0.25s ease;
+}
+
+.btn-deletar:hover {
+    background: linear-gradient(90deg, #d81b60, #b0124a);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(176, 18, 74, 0.35);
+}
+
+.btn-deletar:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(176, 18, 74, 0.3);
+}
+
 /* RESUMOS (CENTRALIZADOS) */
 .container > p {
     background: #fff0f8;
@@ -345,13 +381,20 @@ ul li:hover {
                     }
                     ?>
                 </td>
+
                 <td>
-                    <form action="deletar-produto" method="POST" style="display:inline-block;">
+                    <form
+                        action="deletar-produto"
+                        method="POST"
+                        class="form-deletar"
+                        onsubmit="return confirm('Deseja mesmo deletar este produto?');"
+                    >
                         <input type="hidden" name="produto_id" value="<?php echo $produto['id']; ?>">
-                        <button type="submit" class="btn btn-sm btn-danger">
-                            Deletar
+                        <button type="submit" class="btn btn-sm btn-deletar">
+                            🗑️ Deletar
                         </button>
                     </form>
+                </td>
             </tr>
         <?php endforeach; ?>
         </tbody>
@@ -556,4 +599,4 @@ ul li:hover {
 
 </div>
 
-<?php require dirname(__DIR__) . '/partials/rodape.php'; ?>
+<?php require dirname(__DIR__) . '/partials/rodape.php'; ?> 
