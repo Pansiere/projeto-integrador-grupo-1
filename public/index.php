@@ -3,9 +3,11 @@
 require dirname(__DIR__) . '/vendor/autoload.php';
 
 use App\Controllers\PainelController;
+use App\Controllers\ProdutoController;
 
 $rotas = [
     'GET /' => [PainelController::class, 'index'],
+    'POST /produto' => [ProdutoController::class, 'salvar'],
 ];
 
 $pedido = $_SERVER['REQUEST_METHOD'] . ' ' . parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);

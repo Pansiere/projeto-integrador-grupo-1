@@ -341,12 +341,12 @@ ul li:hover {
     <!-- FORMULÁRIO DE MOVIMENTAÇÃO -->
     <h2 class="mt-5">Registrar movimentação</h2>
 
-    <form action="recebe.php" method="POST">
+    <form action="produto" method="POST">
 
         <div class="mb-3">
             <label class="form-label" for="produto">Produto</label>
 
-            <select name="produto" id="produto" class="form-select" required>
+            <select name="produto_id" id="produto" class="form-select" required>
                 <?php foreach ($produtos as $produto): ?>
                     <option value="<?php echo $produto['id']; ?>">
                         <?php echo htmlspecialchars($produto['nome']); ?>
