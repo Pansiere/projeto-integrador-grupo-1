@@ -1,5 +1,3 @@
-<?php require dirname(__DIR__) . '/partials/topo.php'; ?>
-
 <style>
 /* FUNDO DA PÁGINA */
 body {
@@ -326,10 +324,14 @@ ul li:hover {
 }
 </style>
 
-<div class="container">
-
     <!-- TÍTULO -->
     <h1 class="mb-4">Estoque da Cantina</h1>
+
+
+<div class="container">
+
+    <!-- FORMULÁRIO DE MOVIMENTAÇÃO -->
+    <h2 class="mt-5">Produtos</h2>
 
     <!-- TABELA DO ESTOQUE -->
     <table class="table table-bordered table-striped">
@@ -340,6 +342,7 @@ ul li:hover {
                 <th>Quantidade</th>
                 <th>Mínimo</th>
                 <th>Preço</th>
+                <th>Valor Total</th>
                 <th>Status</th>
                 <th>Ações</th>
             </tr>
@@ -381,6 +384,13 @@ ul li:hover {
                     }
                     ?>
                 </td>
+                <td>
+                    R$ <?php echo number_format(
+                        (float) ($produto['quantidade'] * $produto['preco']),
+                        2,
+                        ',',
+                        '.'
+                    ); ?>
 
                 <td>
                     <form
@@ -400,6 +410,21 @@ ul li:hover {
         </tbody>
 
     </table>
+
+    
+    <!-- VALOR TOTAL DO ESTOQUE -->
+    <?php
+    $valorTotal = 0;
+
+    foreach ($produtos as $produto) {
+        $valorTotal +=
+            $produto['quantidade'] * $produto['preco'];
+    }
+    ?>
+    <p>
+        <strong>Valor total do estoque:</strong>
+        R$ <?php echo number_format($valorTotal, 2, ',', '.'); ?>
+    </p>
 
     <!-- FORMULÁRIO DE MOVIMENTAÇÃO -->
     <h2 class="mt-5">Registrar movimentação</h2>
@@ -532,71 +557,28 @@ ul li:hover {
         <button type="submit" class="btn btn-primary">
             Cadastrar
         </button>
-
     </form>
 
-    <!-- CONTAGEM DE PRODUTOS NO MÍNIMO OU ABAIXO -->
-    <?php
-    $quantosAcabando = 0;
-    $totalProdutos = count($produtos);
+    <h2 class="mt-5">Histórico de Movimentações</h2>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Produto</th>
+                <th>Tipo</th>
+                <th>Quantidade</th>
+                <th>Data</th>
+            </tr>
+        </thead>
 
-    foreach ($produtos as $produto) {
-        if ($produto['quantidade'] <= $produto['minimo']) {
-            $quantosAcabando++;
-        }
-    }
-    ?>
-
-    <p class="mt-4">
-        <?php echo $quantosAcabando; ?>
-        de
-        <?php echo $totalProdutos; ?>
-        produtos no mínimo ou abaixo.
-    </p>
-
-    <!-- LISTA DE COMPRAS -->
-    <h3>Lista de compras</h3>
-
-    <ul>
-        <?php foreach ($produtos as $produto):
-            $qtd = $produto['quantidade'];
-            $min = $produto['minimo'];
-
-            if ($qtd <= $min):
-                $falta = $min - $qtd;
-        ?>
-            <li>
-                <?php
-                echo htmlspecialchars($produto['nome']) . ': ';
-
-                if ($falta > 0) {
-                    echo 'faltam ' . $falta;
-                } else {
-                    echo 'está no mínimo';
-                }
-                ?>
-            </li>
-        <?php
-            endif;
-        endforeach;
-        ?>
-    </ul>
-
-    <!-- VALOR TOTAL DO ESTOQUE -->
-    <?php
-    $valorTotal = 0;
-
-    foreach ($produtos as $produto) {
-        $valorTotal +=
-            $produto['quantidade'] * $produto['preco'];
-    }
-    ?>
-
-    <p>
-        <strong>Valor total do estoque:</strong>
-        R$ <?php echo number_format($valorTotal, 2, ',', '.'); ?>
-    </p>
-
+        <tbody>
+        <?php foreach ($movimentacoes as $movimentacao): ?>
+            <tr>
+                <td><?php echo htmlspecialchars($movimentacao['nome']); ?></td>
+                <td><?php echo htmlspecialchars($movimentacao['tipo']); ?></td>
+                <td><?php echo htmlspecialchars($movimentacao['quantidade']); ?></td>
+                <td><?php echo date('d/m/Y H:i', strtotime($movimentacao['data'])); ?></td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
 </div>
-
-<?php require dirname(__DIR__) . '/partials/rodape.php'; ?> 
