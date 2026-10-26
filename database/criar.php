@@ -19,7 +19,7 @@ $comandos = [
     "DROP TABLE IF EXISTS movimentacoes;",
     "CREATE TABLE movimentacoes (
         id INTEGER PRIMARY KEY,
-        produto_id NOT NULL REFERENCES produtos(id),
+        produto_id INTEGER  NOT NULL REFERENCES produtos(id),
         tipo TEXT NOT NULL,
         quantidade INTEGER NOT NULL,
         data TEXT NOT NULL
