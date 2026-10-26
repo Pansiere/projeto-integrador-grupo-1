@@ -419,6 +419,71 @@ ul li:hover {
 
     </form>
 
+    <!-- FORMULÁRIO DE CADASTRO DE NOVO ITEM -->
+    <h2 class="mt-5">Cadastrar novo item</h2>
+
+    <form action="novo-produto" method="POST">
+
+        <div class="mb-3">
+            <label class="form-label" for="nome">Nome do produto</label>
+
+            <input
+                type="text"
+                name="nome"
+                id="nome"
+                class="form-control"
+                required
+            >
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="nova_quantidade">Quantidade inicial</label>
+
+            <input
+                type="number"
+                name="quantidade"
+                id="nova_quantidade"
+                class="form-control"
+                min="0"
+                value="0"
+                required
+            >
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="minimo">Estoque mínimo</label>
+
+            <input
+                type="number"
+                name="minimo"
+                id="minimo"
+                class="form-control"
+                min="0"
+                value="0"
+                required
+            >
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="preco">Preço (R$)</label>
+
+            <input
+                type="number"
+                name="preco"
+                id="preco"
+                class="form-control"
+                min="0"
+                step="0.01"
+                required
+            >
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            Cadastrar
+        </button>
+
+    </form>
+
     <!-- CONTAGEM DE PRODUTOS NO MÍNIMO OU ABAIXO -->
     <?php
     $quantosAcabando = 0;

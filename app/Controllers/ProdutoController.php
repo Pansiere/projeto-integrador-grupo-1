@@ -38,4 +38,25 @@ class ProdutoController
         header('Location: /');
         exit;   
     }
+
+    public function novoProduto(): void
+    {
+        $pdo = Banco::conectar();
+
+        $nome = $_POST['nome'];
+        $quantidade = $_POST['quantidade'];
+        $minimo = $_POST['minimo'];
+        $preco = $_POST['preco'];
+
+        $stmt = $pdo->prepare("INSERT INTO produtos (nome, quantidade, minimo, preco) VALUES (:nome, :quantidade, :minimo, :preco)");
+        $stmt->execute([
+            ':nome' => $nome,
+            ':quantidade' => $quantidade,
+            ':minimo' => $minimo,
+            ':preco' => $preco,
+        ]); 
+
+        header('Location: /');
+        exit;
+    }
 }
