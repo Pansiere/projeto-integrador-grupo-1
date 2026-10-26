@@ -37,13 +37,14 @@ body::after {
     pointer-events: none;
 }
 
-/* CARTÃO PRINCIPAL */
+/* CARTÃO PRINCIPAL (CENTRALIZADO) */
 .container {
     background: rgba(255, 255, 255, 0.92);
     border-radius: 25px;
     padding: 40px !important;
-    margin-top: 35px;
-    margin-bottom: 50px;
+    margin: 35px auto 50px auto;
+    max-width: 900px;
+    text-align: center;
     box-shadow: 0 15px 45px rgba(112, 18, 74, 0.25);
     border: 2px solid rgba(255, 255, 255, 0.8);
 }
@@ -69,14 +70,17 @@ h1::after {
 h2 {
     color: #b20d61;
     font-weight: 700;
-    border-left: 7px solid #f02b91;
-    padding-left: 15px;
+    text-align: center;
+    display: inline-block;
+    border-bottom: 4px solid #f02b91;
+    padding-bottom: 8px;
     margin-bottom: 25px;
 }
 
 h3 {
     color: #c4146e;
     font-weight: 700;
+    text-align: center;
     margin-top: 35px;
 }
 
@@ -84,10 +88,9 @@ h3 {
 .table {
     border-radius: 15px;
     overflow: hidden;
-    margin-top: 20px;
+    margin: 20px auto 30px auto;
     box-shadow: 0 8px 20px rgba(145, 21, 91, 0.12);
     border-color: #f4bad6;
-    margin-bottom: 30px;
 }
 
 .table thead {
@@ -142,13 +145,16 @@ h3 {
     box-shadow: 0 3px 8px rgba(233, 30, 99, 0.25);
 }
 
-/* FORMULÁRIO */
+/* FORMULÁRIO (CENTRALIZADO) */
 form {
     background: linear-gradient(145deg, #fff1f8, #ffe0ef);
     padding: 30px;
     border-radius: 20px;
     border: 2px solid #ffc1df;
     box-shadow: 0 8px 25px rgba(179, 22, 101, 0.12);
+    max-width: 500px;
+    margin: 0 auto;
+    text-align: left; /* labels e campos alinhados à esquerda dentro do form */
 }
 
 .form-label {
@@ -208,7 +214,7 @@ form {
     box-shadow: 0 9px 20px rgba(212, 20, 117, 0.4);
 }
 
-/* RESUMOS */
+/* RESUMOS (CENTRALIZADOS) */
 .container > p {
     background: #fff0f8;
     border-left: 6px solid #e91e8f;
@@ -216,16 +222,22 @@ form {
     padding: 15px 20px;
     color: #661642;
     font-weight: 600;
+    text-align: center;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 p strong {
     color: #a80f5d;
 }
 
-/* LISTA DE COMPRAS */
+/* LISTA DE COMPRAS (CENTRALIZADA) */
 ul {
     list-style: none;
     padding: 0;
+    max-width: 500px;
+    margin: 0 auto 20px auto;
 }
 
 ul li {
