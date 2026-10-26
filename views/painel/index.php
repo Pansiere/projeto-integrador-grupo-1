@@ -305,6 +305,7 @@ ul li:hover {
                 <th>Mínimo</th>
                 <th>Preço</th>
                 <th>Status</th>
+                <th>Ações</th>
             </tr>
         </thead>
 
@@ -344,6 +345,13 @@ ul li:hover {
                     }
                     ?>
                 </td>
+                <td>
+                    <form action="deletar-produto" method="POST" style="display:inline-block;">
+                        <input type="hidden" name="produto_id" value="<?php echo $produto['id']; ?>">
+                        <button type="submit" class="btn btn-sm btn-danger">
+                            Deletar
+                        </button>
+                    </form>
             </tr>
         <?php endforeach; ?>
         </tbody>

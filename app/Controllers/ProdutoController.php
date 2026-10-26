@@ -59,4 +59,24 @@ class ProdutoController
         header('Location: /');
         exit;
     }
+
+    public function deletarProduto(): void
+    {
+        $pdo = Banco::conectar();
+
+        $produto_id = $_POST['produto_id'];
+
+        $stmt = $pdo->prepare("DELETE FROM movimentacoes WHERE produto_id = :produto_id");
+        $stmt->execute([
+            ':produto_id' => $produto_id,
+        ]);
+
+        $stmt = $pdo->prepare("DELETE FROM produtos WHERE id = :produto_id");
+        $stmt->execute([
+            ':produto_id' => $produto_id,
+        ]);
+
+        header('Location: /');
+        exit;
+    }
 }

@@ -9,6 +9,7 @@ $rotas = [
     'GET /' => [PainelController::class, 'index'],
     'POST /produto' => [ProdutoController::class, 'salvar'],
     'POST /novo-produto' => [ProdutoController::class, 'novoProduto'],
+    'POST /deletar-produto' => [ProdutoController::class, 'deletarProduto'],
 ];
 
 $pedido = $_SERVER['REQUEST_METHOD'] . ' ' . parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
