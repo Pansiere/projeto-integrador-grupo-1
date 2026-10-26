@@ -71,6 +71,7 @@ class ProdutoController
             ':produto_id' => $produto_id,
         ]);
 
+        dd($produto_id);
         $stmt = $pdo->prepare("DELETE FROM produtos WHERE id = :produto_id");
         $stmt->execute([
             ':produto_id' => $produto_id,
